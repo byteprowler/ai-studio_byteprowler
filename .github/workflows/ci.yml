@@ -10,7 +10,7 @@ on:
 
 jobs:
   checks:
-    name: Lint and Build
+    name: Lint, Test, and Build
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: pnpm
 
       - name: Install dependencies
@@ -33,6 +33,9 @@ jobs:
 
       - name: Run lint
         run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test
 
       - name: Build project
         run: pnpm build
